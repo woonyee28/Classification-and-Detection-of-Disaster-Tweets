@@ -14,7 +14,7 @@ In order to achieve the goals set out, we will need to:
 ![mini-project](https://user-images.githubusercontent.com/32679064/161420789-8ce35467-9ec5-4997-947d-efdf00348fc6.gif)
 
 ## Full Presentation
-[Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)
+Presentation Video: [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)     
 For detailed walkthrough, please view the source code in order from:   
 
 1. Data Extraction and Data Cleaning
