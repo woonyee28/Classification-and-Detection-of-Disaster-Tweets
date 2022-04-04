@@ -18,10 +18,10 @@ Presentation Video: [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_
 Full Code in Google Colab: [Click Here](https://colab.research.google.com/drive/1Ui0s3H-CxEHLlRc0PvCCcfNcxYIcEwzE?usp=sharing)     
 For detailed walkthrough, please view the source code in order from:   
 
-1. Data Extraction and Data Cleaning
-2. Data Visualization and Data Pre-processing
-3. Dense Network, LSTM and Bi-LSTM
-4. Comparison and Other Methods
+1. [Data Extraction and Data Cleaning](https://github.com/woonyee28/mini-project/blob/main/Data_Extraction_and_Data_Cleaning.ipynb)
+2. [Data Visualization and Data Pre-processing](https://github.com/woonyee28/mini-project/blob/main/Data_Visualization_and_Data_Pre_processing.ipynb)
+3. [Dense Network, LSTM and Bi-LSTM](https://github.com/woonyee28/mini-project/blob/main/Dense_Network%2C_LSTM_and_Bi_LSTM.ipynb)
+4. [Comparison and Other Methods](https://github.com/woonyee28/mini-project/blob/main/Comparison_and_Other_Methods.ipynb)
 5. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
 
 ## Models used
