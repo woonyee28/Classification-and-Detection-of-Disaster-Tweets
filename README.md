@@ -23,7 +23,7 @@ For detailed walkthrough, please view the source code in order from:
 4. Dense Network
 5. LSTM and Bi-LSTM
 6. Comparison and Other Methods
-6. Website
+7. Website
 
 ## Models used
 - Dense Network
