@@ -12,6 +12,7 @@ In order to achieve the goals set out, we will need to:
 * Implement the idea (through a website)
 
 ![mini-project](https://user-images.githubusercontent.com/32679064/161420789-8ce35467-9ec5-4997-947d-efdf00348fc6.gif)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/9YFjJz0AOWY/0.jpg)](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)
 
 ## Models used
 - Dense Network
@@ -39,7 +40,8 @@ In order to achieve the goals set out, we will need to:
   - `Long Short-Term Memory (LSTM)` Network 
   - `Bi-directional LSTM` Network 
 - Website 
-  - [PLACEHOLDER]
+  - Use of `Streamlit`
+  - Deploy in both localhost and home server to test run
 
 ## References
 - https://www.kaggle.com/competitions/nlp-getting-started/data  
@@ -50,6 +52,8 @@ In order to achieve the goals set out, we will need to:
 - https://www.analyticsvidhya.com/blog/2021/06/nlp-sentiment-analysis/  
 - https://analyticsindiamag.com/complete-guide-to-bidirectional-lstm-with-python-codes/  
 - https://towardsdatascience.com/nlp-spam-detection-in-sms-text-data-using-deep-learning-b8632db85cc8  
+- https://ourworldindata.org/natural-disasters#:~:text=a%20new%20tab.-,Summary,from%200.01%25%20to%200.4%25
+- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0150190#:~:text=Twitter%2C%20therefore%2C%20not%20only%20acts,help%20being%20extended%20by%20others
 
 ## Contributors
 - `woonyee28` - Website, Implementation of idea
