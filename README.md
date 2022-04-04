@@ -12,7 +12,9 @@ In order to achieve the goals set out, we will need to:
 * Implement the idea (through a website)
 
 ![mini-project](https://user-images.githubusercontent.com/32679064/161420789-8ce35467-9ec5-4997-947d-efdf00348fc6.gif)
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/9YFjJz0AOWY/0.jpg)](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)
+
+## Full Presentation
+![Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)
 
 ## Models used
 - Dense Network
