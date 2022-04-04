@@ -15,6 +15,7 @@ In order to achieve the goals set out, we will need to:
 
 ## Full Presentation
 Presentation Video: [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)     
+Full Code in Google Colab: [Click Here](https://colab.research.google.com/drive/1Ui0s3H-CxEHLlRc0PvCCcfNcxYIcEwzE?usp=sharing)
 For detailed walkthrough, please view the source code in order from:   
 
 1. Data Extraction and Data Cleaning
