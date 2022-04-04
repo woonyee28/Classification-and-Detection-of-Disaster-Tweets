@@ -15,6 +15,15 @@ In order to achieve the goals set out, we will need to:
 
 ## Full Presentation
 [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)
+For detailed walkthrough, please view the source code in order from:   
+
+1. Data Extraction and Data Cleaning
+2. Data Visualization
+3. Data Pre-processing
+4. Dense Network
+5. LSTM and Bi-LSTM
+6. Comparison and Other Methods
+6. Website
 
 ## Models used
 - Dense Network
@@ -54,8 +63,8 @@ In order to achieve the goals set out, we will need to:
 - https://www.analyticsvidhya.com/blog/2021/06/nlp-sentiment-analysis/  
 - https://analyticsindiamag.com/complete-guide-to-bidirectional-lstm-with-python-codes/  
 - https://towardsdatascience.com/nlp-spam-detection-in-sms-text-data-using-deep-learning-b8632db85cc8  
-- https://ourworldindata.org/natural-disasters#:~:text=a%20new%20tab.-,Summary,from%200.01%25%20to%200.4%25
-- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0150190#:~:text=Twitter%2C%20therefore%2C%20not%20only%20acts,help%20being%20extended%20by%20others
+- https://ourworldindata.org/natural-disasters
+
 
 ## Contributors
 - `woonyee28` - Website, Implementation of idea
