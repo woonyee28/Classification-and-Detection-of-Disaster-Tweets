@@ -19,12 +19,10 @@ Full Code in Google Colab: [Click Here](https://colab.research.google.com/drive/
 For detailed walkthrough, please view the source code in order from:   
 
 1. Data Extraction and Data Cleaning
-2. Data Visualization
-3. Data Pre-processing
-4. Dense Network
-5. LSTM and Bi-LSTM
-6. Comparison and Other Methods
-7. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
+2. Data Visualization and Data Pre-processing
+3. Dense Network, LSTM and Bi-LSTM
+4. Comparison and Other Methods
+5. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
 
 ## Models used
 - Dense Network
