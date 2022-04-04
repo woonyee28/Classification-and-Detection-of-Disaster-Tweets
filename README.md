@@ -66,6 +66,6 @@ For detailed walkthrough, please view the source code in order from:
 
 
 ## Contributors
-- `woonyee28` - Website, Implementation of idea
+- `woonyee28` - Website, Implementation and Setup of Idea
 - `Baby-McBabyFace` - Data Cleaning, Data Visualization, Data Pre-processing
 - `keenlim` - Machine Learning Models, Comparison
