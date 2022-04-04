@@ -42,11 +42,16 @@ In order to achieve the goals set out, we will need to:
   - [PLACEHOLDER]
 
 ## References
-https://www.kaggle.com/competitions/nlp-getting-started/data  
-https://towardsdatascience.com/beginners-guide-for-data-cleaning-and-feature-extraction-in-nlp-756f311d8083  
-https://stackoverflow.com/questions/25447700/annotate-bars-with-values-on-pandas-bar-plots  
-https://www.datacamp.com/community/tutorials/wordcloud-python  
-https://towardsdatascience.com/nlp-preparing-text-for-deep-learning-model-using-tensorflow2-461428138657  
-https://www.analyticsvidhya.com/blog/2021/06/nlp-sentiment-analysis/  
-https://analyticsindiamag.com/complete-guide-to-bidirectional-lstm-with-python-codes/  
-https://towardsdatascience.com/nlp-spam-detection-in-sms-text-data-using-deep-learning-b8632db85cc8  
+- https://www.kaggle.com/competitions/nlp-getting-started/data  
+- https://towardsdatascience.com/beginners-guide-for-data-cleaning-and-feature-extraction-in-nlp-756f311d8083  
+- https://stackoverflow.com/questions/25447700/annotate-bars-with-values-on-pandas-bar-plots  
+- https://www.datacamp.com/community/tutorials/wordcloud-python  
+- https://towardsdatascience.com/nlp-preparing-text-for-deep-learning-model-using-tensorflow2-461428138657  
+- https://www.analyticsvidhya.com/blog/2021/06/nlp-sentiment-analysis/  
+- https://analyticsindiamag.com/complete-guide-to-bidirectional-lstm-with-python-codes/  
+- https://towardsdatascience.com/nlp-spam-detection-in-sms-text-data-using-deep-learning-b8632db85cc8  
+
+## Contributors
+- `woonyee28` - Website, Implementation of idea
+- `Baby-McBabyFace` - Data Cleaning, Data Visualization, Data Pre-processing
+- `keenlim` - Machine Learning Models, Comparison
