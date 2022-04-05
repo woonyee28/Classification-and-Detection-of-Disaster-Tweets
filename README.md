@@ -34,7 +34,7 @@ We used this [dataset](https://www.kaggle.com/competitions/nlp-getting-started/d
 
 ## Conclusion
 - Between Dense Network, LSTM Model, and Bi-Directional LSTM, Dense Network has the highest accuracy.  
-- Data overfitting would reduce accuracy of the model  
+- Data overfitting would slightly reduce accuracy of the model  
 - With close to 80% accuracy, our model did well on the classification most of the time.  
 - Using real life example tweets, our model successfully classified tweets, with 1 false positive out of 14 tweets  
 
@@ -72,4 +72,4 @@ We used this [dataset](https://www.kaggle.com/competitions/nlp-getting-started/d
 ## Contributors
 - `woonyee28` - Website, Implementation and Setup of Idea
 - `Baby-McBabyFace` - Data Cleaning, Data Visualization, Data Pre-processing
-- `keenlim` - Machine Learning Models, Comparison
+- `keenlim` - Machine Learning Models, Comparison of data
