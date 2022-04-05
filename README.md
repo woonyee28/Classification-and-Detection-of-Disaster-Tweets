@@ -24,6 +24,9 @@ For detailed walkthrough, please view the source code in order from:
 4. [Comparison and Other Methods](https://github.com/woonyee28/mini-project/blob/main/Comparison_and_Other_Methods.ipynb)
 5. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
 
+## Dataset used
+We used this [dataset](https://www.kaggle.com/competitions/nlp-getting-started/data) provided by Kaggle for our project
+
 ## Models used
 - Dense Network
 - Long Short-Term Memory (LSTM) Network 
@@ -55,6 +58,7 @@ For detailed walkthrough, please view the source code in order from:
 
 ## References
 - https://www.kaggle.com/competitions/nlp-getting-started/data  
+- https://www.kaggle.com/datasets/phanttan/disastertweets-prepared  
 - https://towardsdatascience.com/beginners-guide-for-data-cleaning-and-feature-extraction-in-nlp-756f311d8083  
 - https://stackoverflow.com/questions/25447700/annotate-bars-with-values-on-pandas-bar-plots  
 - https://www.datacamp.com/community/tutorials/wordcloud-python  
