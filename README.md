@@ -36,7 +36,16 @@ We used this [dataset](https://www.kaggle.com/competitions/nlp-getting-started/d
 ## Conclusion
 - Between Dense Network, LSTM Model, and Bi-Directional LSTM, Dense Network has the highest accuracy.  
 - Data overfitting would slightly reduce accuracy of the model  
-- With close to 80% accuracy, our model did well on the classification most of the time.  
+- With close to 80% accuracy, our model did well on the classification most of the time. 
+- However, when testing it on a new set of data, the accuracy of our dataset have dropped to approximately 50%.
+- While, it is shown that our test dataset have learn some universal features, but the drop in accuracy was not what we expected. 
+- The drop in accuracy may be caused by the difference in datasets. Each datasets have its own unique features.
+- Also, this may suggests that our training dataset may be unrepresentative of the large pool of datasets. Hence, showing the limiting factor of our dataset where we do not have a broad domain. 
+
+## Future improvement
+- On a larger scale, we would like to try using the Bidirectional Encoder Representations from Transformers (BERT) model
+- Further tunes our hyperparameter
+- Generalise our dataset to prevents any bias or unrepresentative datasets
 
 ## Takeaways
 - Data Cleaning
