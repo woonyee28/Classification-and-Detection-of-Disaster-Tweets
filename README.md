@@ -22,7 +22,8 @@ For detailed walkthrough, please view the source code in order from:
 2. [Data Visualization and Data Pre-processing](https://github.com/woonyee28/mini-project/blob/main/Data_Visualization_and_Data_Pre_processing.ipynb)
 3. [Dense Network, LSTM and Bi-LSTM](https://github.com/woonyee28/mini-project/blob/main/Dense_Network%2C_LSTM_and_Bi_LSTM.ipynb)
 4. [Comparison and Other Methods](https://github.com/woonyee28/mini-project/blob/main/Comparison_and_Other_Methods.ipynb)
-5. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
+5. [Validation of the Model](https://github.com/woonyee28/mini-project/blob/main/Validation.ipynb)
+6. [Website](https://github.com/woonyee28/mini-project/blob/main/index-streamlit.py)
 
 ## Dataset used
 We used this [dataset](https://www.kaggle.com/competitions/nlp-getting-started/data) provided by Kaggle for our project

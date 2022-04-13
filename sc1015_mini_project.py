@@ -65,7 +65,7 @@ Since it is formatted into a CSV file, we can import the dataset into Python thr
 `head()` function is used to verify that the dataset is successfully imported.
 """
 
-fileURL = "https://raw.githubusercontent.com/woonyee28/mini-project/main/train.csv" #Assign link of dataset to variable
+fileURL = "https://raw.githubusercontent.com/woonyee28/mini-project/main/data/train.csv" #Assign link of dataset to variable
 original_tweets = pd.read_csv(fileURL) #Import data into original_tweets
 
 #original_tweets = pd.read_csv("/content/Dataset/mini_project_train.csv") #Import data from CSV File
@@ -509,7 +509,7 @@ At this point, we have:
 
 ## Dense Network
 ---
-Code below explains the dense model architecture
+Code below explains how we implemented the dense model architecture
 """
 
 vocab_size = 13000 #Defined earlier as number_of_tokens
@@ -583,7 +583,7 @@ plot_graphs1('Training_Loss','Validation_Loss','loss')
 
 plot_graphs1('Training_Accuracy','Validation_Accuracy','accuracy')
 
-"""## Dense Network (Overfitting)
+"""## Dense Network (Overfitting Model)
 
 This model as shown below is most likely to be overfitting. The model as shown as 2 densely connected layers of 64 elements.
 
@@ -604,7 +604,7 @@ overfitmodel.add(Dense(1,activation='sigmoid'))
 
 overfitmodel.summary()
 
-overfitmodel.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+overfitmodel.compile(loss='binary_crossentropy',optimizer = 'adam', metrics=['accuracy'])
 
 num_epochs = 30
 history = overfitmodel.fit(training_padded, isDisaster_train, epochs=num_epochs, validation_data=(testing_padded, isDisaster_test),verbose=2)
@@ -627,9 +627,11 @@ def plot_graphs1(var1,var2,string):
 plot_graphs1('Training_Loss','Validation_Loss','loss')
 plot_graphs1('Training_Accuracy','Validation_Accuracy','accuracy')
 
-"""### Confusion matrices: Overfitted data
+"""From the training and validation accuracy graph, we can see that as the training accuracy continues to increase, the validation accuracy decreases slightly which increases the discrepancy between the training accuracy and validation accuracy. Therefore, showing that our data may have some extent of overfitting of data.
 
-Confusion matrix will provide us with the details of the data's accuracy, precision, recall, F1 score and the false positive rate. 
+### Confusion matrices: Overfitted data
+
+Confusion matrix will provide us with the details of the data's accuracy, precision, recall, F1 score and the false positive rate.
 """
 
 # Visualise data
@@ -703,12 +705,14 @@ To handle overfitting of data,
 
 1.   Reduce the network's capacity where we remove layers and reduce the number of elements in the hidden layer as seen. 
 2.   Included a dropout layer in order to prevent overfitting of data
+3.   Include early stopping to stop the fitting of model after 2 continuous validation loss
 """
 
 vocab_size = 13000 #Defined earlier as number_of_tokens
 embeding_dim = 16
 drop_value = 0.2
 n_dense = 24
+
 
 model = Sequential()
 model.add(Embedding(vocab_size,embeding_dim,input_length=max_len))
@@ -719,10 +723,10 @@ model.add(Dense(1,activation='sigmoid'))
 
 model.summary()
 
-model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+model.compile(loss='binary_crossentropy',optimizer = 'adam', metrics=['accuracy'])
 
 num_epochs = 30
-early_stop = EarlyStopping(monitor='val_loss',patience=3)
+early_stop = EarlyStopping(monitor='val_loss',patience=2)
 history = model.fit(training_padded, isDisaster_train, epochs=num_epochs, validation_data=(testing_padded, isDisaster_test),callbacks=[early_stop],verbose=2)
 
 
@@ -811,7 +815,13 @@ Test_stats  = "\n\nAccuracy={:0.2f}\nPrecision={:0.2f}\nRecall={:0.2f}\nFalse po
         Accuracy_test, Precision_test, Recall_test, FPR,F1_score_test)
 axes[1].set(xlabel = 'Predicted'+Test_stats,ylabel='Actual',title = 'Testing set')
 
-"""## Comparision of results (Dense Network)
+"""After handling the overfitting of data, 
+
+
+*   Accuracy have improved
+*   Smaller discrepancy between the training and validation set
+
+## Comparision of results (Dense Network)
 ---
 The bar plot helps to compare between the accuracy of the data that were overfitted and the accurcay of the data after we had handled the overfitting of data.
 
@@ -910,7 +920,10 @@ print(f"Dense architecture loss and accuracy: {model.evaluate(testing_padded,isD
 print(f"LSTM architecture loss and accuracy: {model1.evaluate(testing_padded,isDisaster_test)}")
 print(f"Bi-LSTM architecture loss and accuracy: {model2.evaluate(testing_padded,isDisaster_test)}")
 
-""":We uses a bar plot to help with the visualisation of our results. Hence, by sorting the data to be shown in an ascending order in the bar plot, our results show that out of the three models, the dense model have provided us with the best accuracy result. """
+"""We uses a bar plot to help with the visualisation of our results. Hence, by sorting the data to be shown in an ascending order in the bar plot, our results show that out of the three models, the dense model have provided us with the best accuracy result. 
+
+However, we also note that this three models may not provide us with a high accuracy of 90%, hence, in the future, we can try out other natural language process model such as the BERT model. 
+"""
 
 # Visualisation to compare the different 3 models in terms of their accuracy 
 import matplotlib.pyplot as plt
@@ -977,33 +990,15 @@ sb.heatmap(confusion_matrix(isDisaster_train, y_train_pred),
 sb.heatmap(confusion_matrix(isDisaster_test, y_test_pred), 
            annot = True, fmt=".0f", annot_kws={"size": 18}, ax = axes[1])
 
-"""## Other methods : Random Forest Classifier
+"""However, as seen from the classification accuracy, the accuracy of the test dataset is approximately 59%. Hence, suggessting that it might not be a good representation of our dataset.
 
-First, we will tune the hyperparameter using GridSearchCV from sklearn
-
-GridSearchCV will take the following parameters:
-
-
-*   Estimator - RandomForestClassifier
-*   Parameters 
-*   CV - signifies cross-validation folds
-*   return_train_score - returns the training scores of the various models
-*   n_jobs - no. of jobs to run parallely
+## Other methods : Random Forest Classifier
 """
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, roc_curve, classification_report
 from sklearn.metrics import plot_confusion_matrix
-
-"""We will pass this as a parameter to GridSearchCV to train our random forest classifier model using all possible combinations of these parameters to find the best model - stuck"""
-
-parameters = {'max_features':('auto','sqrt'),
-              'n_estimators':[10],
-              'max_depth':[None],
-              'min_samples_split':[5,10,15],
-              'min_samples_leaf':[1,2,5,10],
-              'bootstrap':[True,False]}
 
 forest = RandomForestClassifier(random_state = 1, n_estimators = 10, min_samples_split = 2)
 modelF = forest.fit(training_padded,isDisaster_train)
@@ -1018,3 +1013,84 @@ print('Precision_score: ',pre_score)
 print('Recall_score: ',rec_score)
 
 sb.heatmap(confusion_matrix(isDisaster_test,y_predF),annot = True, fmt=".0f", annot_kws={"size": 18})
+
+"""By using the default hyperparameters of random forest tree, we found that it would not provide us with a high accuracy. 
+
+Hence, as we try to pass this as a parameter to GridSearchCV to train our random forest classifier model using all possible combinations of these parameters to find the best model. However, due to time constraint and inability to understand the GridSearchCV, we were unable to improve our accuracy score using the GridSearchCV parameters. In the future, we would try to tune the hyperparameters better in order for us to improve our accuracy using the Random Forest tree.
+
+Tune the hyperparameter using GridSearchCV from sklearn
+
+GridSearchCV will take the following parameters:
+
+
+*   Estimator - RandomForestClassifier
+*   Parameters 
+*   CV - signifies cross-validation folds
+*   return_train_score - returns the training scores of the various models
+*   n_jobs - no. of jobs to run parallely
+"""
+
+parameters = {'max_features':('auto','sqrt'),
+              'n_estimators':[10],
+              'max_depth':[None],
+              'min_samples_split':[5,10,15],
+              'min_samples_leaf':[1,2,5,10],
+              'bootstrap':[True,False]}
+
+"""## Validation
+---
+
+Using another dataset, we can check the accuracy of our model. 
+"""
+
+validationDataURL = "https://raw.githubusercontent.com/woonyee28/mini-project/main/data/validation_data.csv" #Assign link of dataset to variable
+validation_tweets = pd.read_csv(validationDataURL)
+validation_tweets.head()
+
+validation_tweets.rename(columns={'target': 'isDisaster'},inplace=True) #Rename the column 'label' to 'isDisaster'
+validation_tweets.groupby('isDisaster').count() #Group based on the category, and count the number of entries for each category
+
+remove_all(validation_tweets, 'text'); #removes all unnecessary characters from [dataset, column]
+validation_tweets.drop(['keyword', 'location'], axis=1, inplace=True) #Removes unnecessary rows from the dataset
+validation_tweets.head(100) #Verify that all unnecessary characters have been removed from the dataset
+
+tweets_validation, isDisaster_validation = validation_tweets['text'], validation_tweets['isDisaster']
+
+isDisaster_validation.head()
+
+max_len = 75 
+trunc_type = "post" 
+padding_type = "post" 
+oov_token = "<OOV>" 
+number_of_tokens = 1000
+
+tokenizer = Tokenizer(num_words = number_of_tokens, lower= 1, oov_token= oov_token) #Initializing Tokenizer
+tokenizer.fit_on_texts(tweets_validation) #Process of transforming words into numbers into a dictionary
+word_index = tokenizer.word_index
+
+validation_sequences = tokenizer.texts_to_sequences(tweets_validation)
+
+validation_padded = pad_sequences (validation_sequences, maxlen = max_len, padding = padding_type, truncating = trunc_type )
+
+#accuracy for first model (double confirming)
+validation_tweets['first_model_ans'] = pd.DataFrame(np.around(model.predict(validation_padded),decimals=0))
+validation_tweets['first_model_acc'] = np.where(validation_tweets['first_model_ans'] == validation_tweets['isDisaster'], 'True', 'False')
+count = 0
+for i in validation_tweets['first_model_acc']:
+  if i=='True':
+    count+=1
+count/len(validation_tweets['first_model_acc'])
+
+print(f"Dense architecture loss and accuracy: {model.evaluate(validation_padded,isDisaster_validation)}")
+print(f"LSTM architecture loss and accuracy: {model1.evaluate(validation_padded,isDisaster_validation)}")
+print(f"Bi-LSTM architecture loss and accuracy: {model2.evaluate(validation_padded,isDisaster_validation)}")
+
+"""As seen from the results, the accuracy using dense network is approximately 49%, while for the LSTM model, it is 53% and lastly for the Bi-LSTM model, it is 57%. 
+
+In this case, the Bi-LSTM architecture had provided a better accuracy. 
+
+However, as our accuracy is only approximately 50%, it shows that while the accuracy is not perfect/good, our test dataset have learn some universal features. 
+
+The decrease in our accuracy of ur results may be due to the difference in the dataset. Furthermore, this may also suggests that our data sample may be unrepresntative which may not have a broad domain. 
+"""
+
