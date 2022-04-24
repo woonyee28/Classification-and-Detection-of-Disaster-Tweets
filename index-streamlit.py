@@ -11,7 +11,7 @@ import streamlit as st
 
 @st.cache(suppress_st_warning=True)
 def predict_disaster(predict_msg):
-    tweets = pd.read_csv("https://raw.githubusercontent.com/woonyee28/mini-project/main/data/train.csv")
+    tweets = pd.read_csv("data/train.csv")
 
     def remove_user(text):
         user = re.compile(r'@user')
