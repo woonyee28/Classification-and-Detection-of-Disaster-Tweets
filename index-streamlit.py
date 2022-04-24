@@ -11,15 +11,27 @@ import streamlit as st
 
 @st.cache(suppress_st_warning=True)
 def predict_disaster(predict_msg):
-    tweets = pd.read_csv("train.csv")
+    tweets = pd.read_csv("https://raw.githubusercontent.com/woonyee28/mini-project/main/data/train.csv")
+
+    def remove_user(text):
+        user = re.compile(r'@user')
+        return user.sub(r'', text)
 
     def remove_URL(text):
         url = re.compile(r'https?://\S+|www\.\S+')
-        return url.sub(r'',text)
+        return url.sub(r'', text)
 
-    def remove_html(text):
+    def remove_HTML(text):
         html=re.compile(r'<.*?>')
-        return html.sub(r'',text)
+        return html.sub(r'', text)
+
+    def replace_HTML_reserve(text):
+        text = re.sub(r"&amp;", "&", text)
+        text = re.sub(r"&lt;", "<", text)
+        text = re.sub(r"&gt;", ">", text)
+        text = re.sub(r"&le;", "<=", text)
+        text = re.sub(r"&ge;", ">=", text)
+        return text
 
     def remove_emoji(text):
         emoji_pattern = re.compile("["
@@ -31,10 +43,6 @@ def predict_disaster(predict_msg):
                             u"\U000024C2-\U0001F251"
                             "]+", flags=re.UNICODE)
         return emoji_pattern.sub(r'', text)
-
-    def remove_punct(text):
-        table=str.maketrans('','',string.punctuation)
-        return text.translate(table)
 
     def decontraction(text):
         text = re.sub(r"won\'t", " will not", text)
@@ -53,18 +61,18 @@ def predict_disaster(predict_msg):
 
         text = re.sub(r"n\'t", " not", text)
         text = re.sub(r"n\'t've", " not have", text)
-        text = re.sub(r"\'re", " are", text)
-        text = re.sub(r"\'s", " is", text)
-        text = re.sub(r"\'d", " would", text)
-        text = re.sub(r"\'d've", " would have", text)
-        text = re.sub(r"\'ll", " will", text)
-        text = re.sub(r"\'ll've", " will have", text)
-        text = re.sub(r"\'t", " not", text)
-        text = re.sub(r"\'ve", " have", text)
-        text = re.sub(r"\'m", " am", text)
-        text = re.sub(r"\'re", " are", text)
+        text = re.sub(r"(\S)\'re", r"\1 are", text)
+        text = re.sub(r"(\S)\'s", r"\1 is", text)
+        text = re.sub(r"(\S)\'d", r"\1 would", text)
+        text = re.sub(r"(\S)\'d've", r"\1 would have", text)
+        text = re.sub(r"(\S)\'ll", r"\1 will", text)
+        text = re.sub(r"(\S)\'ll've", r"\1 will have", text)
+        text = re.sub(r"(\S)\'t", r"\1 not", text)
+        text = re.sub(r"(\S)\'ve", r"\1 have", text)
+        text = re.sub(r"(\S)\'m", r"\1 am", text)
+        text = re.sub(r"(\S)\'re", r"\1 are", text)
         return text 
-
+        
     def seperate_alphanumeric(text):
         words = text
         words = re.findall(r"[^\W\d_]+|\d+", words)
@@ -72,27 +80,29 @@ def predict_disaster(predict_msg):
 
     def cont_rep_char(text):
         tchr = text.group(0) 
-        
         if len(tchr) > 1:
             return tchr[0:2] 
 
     def unique_char(rep, text):
-        substitute = re.sub(r'(\w)\1+', rep, text)
+        substitute = re.sub(r'([A-Za-z])\1+', rep, text)
         return substitute
 
-    tweets['text']=tweets['text'].apply(lambda x : remove_URL(x))
+    def remove_non_alphanumspace(text):
+        url = re.compile(r'[^0-9a-zA-Z\s]+')
+        return url.sub(r'', text)
 
-    tweets['text']=tweets['text'].apply(lambda x : remove_html(x))
+    def remove_all(dataset, column):
+        dataset[column] = dataset[column].apply(lambda x : remove_user(x))
+        dataset[column] = dataset[column].apply(lambda x : remove_URL(x))
+        dataset[column] = dataset[column].apply(lambda x : remove_HTML(x))
+        dataset[column] = dataset[column].apply(lambda x : replace_HTML_reserve(x))
+        dataset[column] = dataset[column].apply(lambda x: remove_emoji(x))
+        dataset[column] = dataset[column].apply(lambda x : decontraction(x))
+        dataset[column] = dataset[column].apply(lambda x : remove_non_alphanumspace(x))
+        dataset[column] = dataset[column].apply(lambda x : seperate_alphanumeric(x))
+        dataset[column] = dataset[column].apply(lambda x : unique_char(cont_rep_char, x))
 
-    tweets['text']=tweets['text'].apply(lambda x: remove_emoji(x))
-
-    tweets['text']=tweets['text'].apply(lambda x : remove_punct(x))
-
-    tweets['text'] = tweets['text'].apply(lambda x : decontraction(x))
-
-    tweets['text'] = tweets['text'].apply(lambda x : seperate_alphanumeric(x))
-
-    tweets['text'] = tweets['text'].apply(lambda x : unique_char(cont_rep_char, x))
+    remove_all(tweets, 'text'); #removes all unnecessary characters from [dataset, column]
 
     is_disaster_tweets = tweets[tweets.target == 1]
     not_disaster_tweets = tweets[tweets.target == 0]
