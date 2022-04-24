@@ -14,8 +14,12 @@ In order to achieve the goals set out, we will need to:
 ![mini-project](https://user-images.githubusercontent.com/32679064/161420789-8ce35467-9ec5-4997-947d-efdf00348fc6.gif)
 
 ## Full Presentation
-Presentation Video: [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)     
-Full Code in Google Colab: [Click Here](https://colab.research.google.com/drive/1Ui0s3H-CxEHLlRc0PvCCcfNcxYIcEwzE?usp=sharing)     
+| Details     | Link        |
+| ----------- | ----------- |
+| Presentation Video      | [Click Here](https://www.youtube.com/watch?v=9YFjJz0AOWY&ab_channel=NgWoonYee)       |
+| Full Code in Google Colab   | [Click Here](https://colab.research.google.com/drive/1Ui0s3H-CxEHLlRc0PvCCcfNcxYIcEwzE?usp=sharing)        |
+| Website      | [Click Here](https://google.com)       |
+
 For detailed walkthrough, please view the source code in order from:   
 
 1. [Data Extraction and Data Cleaning](https://github.com/woonyee28/mini-project/blob/main/Data_Extraction_and_Data_Cleaning.ipynb)
